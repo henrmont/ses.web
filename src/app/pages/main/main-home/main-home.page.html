@@ -1,0 +1,9 @@
+<section style="width: 100%; display: flex; justify-content: center;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 50px; width: 80vw; padding: 20px 0">
+    @for (item of articles; track $index) {
+      <app-main-home-article [article]="item"></app-main-home-article>
+    } @empty {
+
+    }
+  </div>
+</section>

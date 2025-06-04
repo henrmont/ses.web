@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Módulos do usuário</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-list role="list">
+    @for (item of data.modules; track $index) {
+      <mat-list-item role="listitem">
+        <div style="display: grid; grid-template-columns: 1fr 3fr 1fr; gap: 10px;">
+          <div style="display: flex; justify-content: flex-start; align-items: flex-start;"><mat-icon>people</mat-icon></div>
+          <div style="display: flex; justify-content: flex-start; align-items: flex-start;">{{item.name}}</div>
+          <div style="display: flex; justify-content: flex-start; align-items: flex-end;">
+            <mat-slide-toggle [checked]="checkUserModule(item)" (toggleChange)="changeUserModule(item.id)"></mat-slide-toggle>
+          </div>
+        </div>
+      </mat-list-item>
+    }
+  </mat-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>

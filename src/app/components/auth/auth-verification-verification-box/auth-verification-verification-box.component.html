@@ -1,0 +1,20 @@
+<div style="width: 400px; background-color: rgba(230,230,230,0.9); border-radius: 50px; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+  <form [formGroup]="verificationForm" (ngSubmit)="onSubmit()" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; row-gap: 20px;">
+    <div style="display: flex; justify-content: space-between; width: 100%; gap: 20px;">
+      <mat-form-field class="example-form-field" appearance="outline" >
+        <input matInput #one type="text" [maskito]="maskitoOptions" formControlName="one" (keyup)="two.focus()" (keyup.backspace)="one.focus()" style="text-align: center; font-size: 30px;">
+      </mat-form-field>
+      <mat-form-field class="example-form-field" appearance="outline">
+        <input matInput #two type="text" [maskito]="maskitoOptions" formControlName="two" (keyup)="three.focus()" (keyup.backspace)="one.focus()" style="text-align: center; font-size: 30px;">
+      </mat-form-field>
+      <mat-form-field class="example-form-field" appearance="outline">
+        <input matInput #three type="text" [maskito]="maskitoOptions" formControlName="three" (keyup)="four.focus()" (keyup.backspace)="two.focus()" style="text-align: center; font-size: 30px;">
+      </mat-form-field>
+      <mat-form-field class="example-form-field" appearance="outline">
+        <input matInput #four type="text" [maskito]="maskitoOptions" formControlName="four" (keyup.backspace)="three.focus()" style="text-align: center; font-size: 30px;">
+      </mat-form-field>
+    </div>
+    <button mat-flat-button style="width: 100%;" type="submit" [disabled]="verificationForm.invalid">Enviar código de verificação</button>
+    <button mat-stroked-button style="width: 100%;" type="button" [routerLink]="['/auth/recover']">Voltar</button>
+  </form>
+</div>

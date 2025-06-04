@@ -1,0 +1,7 @@
+@use '@angular/material' as mat;
+
+@include mat.dialog-overrides((
+  container-min-width: 800px,
+  container-color: orange,
+  subhead-color: red,
+));

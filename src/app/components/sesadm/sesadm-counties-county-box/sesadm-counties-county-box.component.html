@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>Município</h2>
+<mat-dialog-content class="mat-typography">
+  <div style="width: 100%; display: grid; grid-template-columns: 2fr 2fr 3fr;">
+    <mat-list>
+      <mat-list-item>
+        <div matListItemTitle>Código IBGE</div>
+        <div matListItemLine>{{data.county.ibge_code}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div matListItemTitle>UF</div>
+        <div matListItemLine>{{data.county.fu}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div matListItemTitle>Ano base</div>
+        <div matListItemLine>{{data.county.tcu_population_base_year | date: 'YYYY'}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div matListItemTitle>Macrorregião</div>
+        <div matListItemLine>{{data.county.macroregion}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div matListItemTitle>Distância da capital</div>
+        <div matListItemLine>{{data.county.distance_from_the_capital}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    <mat-list>
+      <mat-list-item>
+        <div matListItemTitle>Nome</div>
+        <div matListItemLine>{{data.county.name}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div matListItemTitle>Região de saúde</div>
+        <div matListItemLine>{{data.county.health_region.name}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div matListItemTitle>População</div>
+        <div matListItemLine>{{data.county.population}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div matListItemTitle>Município polo</div>
+        <div matListItemLine>{{data.county.polemunicipality}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div matListItemTitle>Distância do município polo</div>
+        <div matListItemLine>{{data.county.distance_from_pole_municipality}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+    </mat-list>
+    <div style="padding: 20px;">
+      <img alt="Silhouette of mountains" [src]="data.county.img_map ? data.county.img_map : 'https://ionicframework.com/docs/img/demos/card-media.png'" style="width: 100%;"/>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>

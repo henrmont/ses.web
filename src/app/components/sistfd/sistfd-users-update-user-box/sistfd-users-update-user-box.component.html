@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Atualizar usuário</h2>
+<form [formGroup]="updateForm" (ngSubmit)="onUpdateSubmit()">
+  <mat-dialog-content class="mat-typography">
+    <mat-form-field style="width: 100%;">
+      <mat-label>Usuário</mat-label>
+      <input matInput type="text" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field style="width: 100%;">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" />
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button type="submit" [disabled]="updateForm.invalid || updateForm.pristine">Atualizar usuário</button>
+    <button mat-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>{{ data.article.title }}</h2>
+<mat-dialog-content class="mat-typography">
+  <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" width="100%" />
+  <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 10px;">
+    <mat-icon style="margin-right: 10px;">calendar_month</mat-icon>
+    <span>{{ data.article.created_at | date: 'dd/MM/YYYY' }}</span>
+  </div>
+  <h3 style="text-align: center; padding: 20px 50px; font-style: italic; ">{{ data.article.subtitle }}</h3>
+  <div [innerHTML]="data.article.content" style="width: 100%; text-indent: 50px; text-align: justify; line-height: 30px;"></div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>

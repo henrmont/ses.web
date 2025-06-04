@@ -1,0 +1,10 @@
+<div style="width: 100%; height: auto; background-color: rgb(240,240,240); border-radius: 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px 0">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <mat-icon style="margin-right: 10px;">calendar_month</mat-icon>
+    <span>{{ article.created_at | date: 'dd/MM/YYYY' }}</span>
+  </div>
+  <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" width="100%" />
+  <h2>{{ article.title }}</h2>
+  <p style="font-weight: 300; padding: 0 20px; text-align: center;">{{ article.subtitle }}</p>
+  <button mat-button (click)="openArticleBox()">Ver mais</button>
+</div>
