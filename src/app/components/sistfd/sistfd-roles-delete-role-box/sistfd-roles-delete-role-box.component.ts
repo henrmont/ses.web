@@ -4,6 +4,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/d
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SesadmService } from '../../../services/sesadm.service';
 
+const sistfdRolesChannel = new BroadcastChannel('sistfd-roles-channel');
+
 @Component({
   selector: 'app-sistfd-roles-delete-role-box',
   imports: [MatDialogModule, MatButtonModule],
@@ -12,7 +14,7 @@ import { SesadmService } from '../../../services/sesadm.service';
 })
 export class SistfdRolesDeleteRoleBoxComponent {
 
-   data = inject(MAT_DIALOG_DATA);
+  data = inject(MAT_DIALOG_DATA);
   private snackBar = inject(MatSnackBar);
 
   constructor(
@@ -37,6 +39,7 @@ export class SistfdRolesDeleteRoleBoxComponent {
         });
       },
       complete: () => {
+        sistfdRolesChannel.postMessage('update')
         this.dialog.closeAll()
       }
     })

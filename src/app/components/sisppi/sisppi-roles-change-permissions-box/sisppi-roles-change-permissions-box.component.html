@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Permissões da regra</h2>
+<mat-dialog-content class="mat-typography" style="overflow-y: scroll; margin-bottom: 20px;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr;">
+    @for (item of data.permissions; track $index;) {
+      <div>
+        <mat-list-item role="listitem">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; justify-content: flex-start; align-items: flex-start;">{{item.name}}</div>
+            <mat-slide-toggle [checked]="havePermission(item)" (toggleChange)="changePermissionToRole(item)"></mat-slide-toggle>
+          </div>
+        </mat-list-item>
+      </div>
+    }
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>

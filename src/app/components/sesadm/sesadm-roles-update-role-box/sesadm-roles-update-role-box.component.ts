@@ -9,6 +9,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SesadmService } from '../../../services/sesadm.service';
 
+const sesadmRolesChannel = new BroadcastChannel('sesadm-roles-channel');
+
 @Component({
   selector: 'app-sesadm-roles-update-role-box',
   imports: [MatToolbarModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, FormsModule, ReactiveFormsModule],
@@ -58,6 +60,7 @@ export class SesadmRolesUpdateRoleBoxComponent implements OnInit {
         });
       },
       complete: () => {
+        sesadmRolesChannel.postMessage('update')
         this.dialog.closeAll()
       }
     })

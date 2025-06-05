@@ -11,6 +11,6 @@
       <mat-icon matSuffix>password</mat-icon>
     </mat-form-field>
     <button mat-flat-button style="width: 100%;" type="submit" [disabled]="authForm.invalid">Entrar</button>
-    <p>Esqueceu a senha? <a [routerLink]="['recover']">Clique aqui</a></p>
+    <p>Esqueceu a senha? <button mat-button [routerLink]="['recover']">Clique aqui</button></p>
   </form>
 </div>

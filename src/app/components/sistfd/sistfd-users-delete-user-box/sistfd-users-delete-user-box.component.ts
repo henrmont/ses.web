@@ -4,6 +4,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/d
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SesadmService } from '../../../services/sesadm.service';
 
+const sistfdUsersChannel = new BroadcastChannel('sistfd-users-channel');
+
 @Component({
   selector: 'app-sistfd-users-delete-user-box',
   imports: [MatDialogModule, MatButtonModule],
@@ -37,6 +39,7 @@ export class SistfdUsersDeleteUserBoxComponent {
         });
       },
       complete: () => {
+        sistfdUsersChannel.postMessage('update')
         this.dialog.closeAll()
       }
     })

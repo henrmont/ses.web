@@ -19,6 +19,8 @@ const restrictRoles = [
   'sesadm/sisppi',
 ]
 
+const sesadmRolesChannel = new BroadcastChannel('sesadm-roles-channel');
+
 @Component({
   selector: 'app-sesadm-roles',
   imports: [MatButtonModule, MatIconModule, MatFormFieldModule, MatTableModule, MatInputModule, MatTooltipModule],
@@ -34,6 +36,11 @@ export class SesadmRolesPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    sesadmRolesChannel.onmessage = (message) => {
+      if (message.data === 'update') {
+        this.getRoles()
+      }
+    }
     this.getRoles()
     this.getPermissions()
   }
@@ -103,6 +110,8 @@ export class SesadmRolesPage implements OnInit {
         role: role,
         permissions: this.permissions
       }
+    }).afterClosed().subscribe(() => {
+      this.getRoles()
     });
   }
 

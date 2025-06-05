@@ -15,6 +15,8 @@ import { SistfdUsersChangeRolesBoxComponent } from '../../../components/sistfd/s
 import { SistfdUsersDeleteUserBoxComponent } from '../../../components/sistfd/sistfd-users-delete-user-box/sistfd-users-delete-user-box.component';
 import { SistfdService } from '../../../services/sistfd.service';
 
+const sistfdUsersChannel = new BroadcastChannel('sistfd-users-channel');
+
 @Component({
   selector: 'app-sistfd-users',
   imports: [MatTableModule, MatButtonModule, MatIconModule, MatTooltipModule, MatFormFieldModule, MatInputModule, MatSlideToggleModule],
@@ -30,6 +32,11 @@ export class SistfdUsersPage {
   ) {}
 
   ngOnInit(): void {
+    sistfdUsersChannel.onmessage = (message) => {
+      if (message.data === 'update') {
+        this.getUsers()
+      }
+    }
     this.getUsers()
     this.getRoles()
   }
@@ -103,6 +110,8 @@ export class SistfdUsersPage {
         user: user,
         roles: this.roles
       }
+    }).afterClosed().subscribe(() => {
+      this.getUsers()
     });
   }
 

@@ -9,6 +9,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SesadmService } from '../../../services/sesadm.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+const sistfdUsersChannel = new BroadcastChannel('sistfd-users-channel');
+
 @Component({
   selector: 'app-sistfd-users-create-user-box',
   imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule],
@@ -46,6 +48,7 @@ export class SistfdUsersCreateUserBoxComponent {
         });
       },
       complete: () => {
+        sistfdUsersChannel.postMessage('update')
         this.dialog.closeAll()
       }
     })

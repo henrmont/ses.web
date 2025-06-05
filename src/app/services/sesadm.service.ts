@@ -83,8 +83,8 @@ export class SesadmService {
   }
 
   // Municípios
-  getCounties(module: any): Observable<any> {
-    return this.http.get<any>(`${environment.apiCoreUrl}/county/get/counties/${module}`, {headers: requestOptions})
+  getCounties(): Observable<any> {
+    return this.http.get<any>(`${environment.apiCoreUrl}/county/get/counties`, {headers: requestOptions})
   }
 
   process(data: any): Observable<any> {

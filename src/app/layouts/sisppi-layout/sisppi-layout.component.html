@@ -1,0 +1,29 @@
+<mat-drawer-container style="width: 100%; z-index: 10;">
+  <mat-drawer mode="side" opened style="background-color: rgb(230,230,230); position: fixed; margin-top: 64px; width: 300px;">
+    <mat-action-list style="width: 100%;">
+        <div mat-subheader>Sistema</div>
+        <button mat-list-item [routerLink]="['users']">
+          <div style="display: flex; align-items: center;">
+            <mat-icon style="margin-right: 10px;">groups</mat-icon>
+            <div>Usuários</div>
+          </div>
+        </button>
+        <button mat-list-item [routerLink]="['roles']">
+          <div style="display: flex; align-items: center;">
+            <mat-icon style="margin-right: 10px;">admin_panel_settings</mat-icon>
+            <div>Regras</div>
+          </div>
+        </button>
+        <div mat-subheader>Municípios</div>
+        <button mat-list-item [routerLink]="['counties']">
+          <div style="display: flex; align-items: center;">
+            <mat-icon style="margin-right: 10px;">location_on</mat-icon>
+            <div>Municípios</div>
+          </div>
+        </button>
+      </mat-action-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -75,6 +75,7 @@ export class SesadmCompetencesPage implements OnInit {
           });
         },
         complete: () => {
+          this.getCompetences()
           this.dialog.closeAll();
         }
       })

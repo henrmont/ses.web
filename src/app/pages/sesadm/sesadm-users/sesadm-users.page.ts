@@ -16,6 +16,8 @@ import { LoadingBoxComponent } from '../../../components/utilities/loading-box/l
 import { SesadmUsersCreateUserBoxComponent } from '../../../components/sesadm/sesadm-users-create-user-box/sesadm-users-create-user-box.component';
 import { SesadmUsersUpdateUserBoxComponent } from '../../../components/sesadm/sesadm-users-update-user-box/sesadm-users-update-user-box.component';
 
+const sesadmUsersChannel = new BroadcastChannel('sesadm-users-channel');
+
 @Component({
   selector: 'app-sesadm-users',
   imports: [MatButtonModule, MatIconModule, MatFormFieldModule, MatTableModule, MatInputModule, MatTooltipModule, MatSlideToggleModule, FormsModule, ReactiveFormsModule],
@@ -30,6 +32,11 @@ export class SesadmUsersPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    sesadmUsersChannel.onmessage = (message) => {
+      if (message.data === 'update') {
+        this.getUsers()
+      }
+    }
     this.getUsers()
     this.getModules()
     this.getRoles()
@@ -113,6 +120,8 @@ export class SesadmUsersPage implements OnInit {
         user: user,
         modules: this.modules
       }
+    }).afterClosed().subscribe(() => {
+      this.getUsers()
     });
   }
 
@@ -125,6 +134,8 @@ export class SesadmUsersPage implements OnInit {
         user: user,
         roles: this.roles
       }
+    }).afterClosed().subscribe(() => {
+      this.getUsers()
     });
   }
 

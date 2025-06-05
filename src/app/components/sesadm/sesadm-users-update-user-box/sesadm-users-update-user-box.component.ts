@@ -9,6 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
+const sesadmUsersChannel = new BroadcastChannel('sesadm-users-channel');
+
 @Component({
   selector: 'app-sesadm-users-update-user',
   imports: [MatToolbarModule, MatIconModule, MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule],
@@ -49,6 +51,7 @@ export class SesadmUsersUpdateUserBoxComponent {
         });
       },
       complete: () => {
+        sesadmUsersChannel.postMessage('update')
         this.dialog.closeAll()
       }
     })

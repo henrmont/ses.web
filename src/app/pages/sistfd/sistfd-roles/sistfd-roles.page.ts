@@ -18,6 +18,8 @@ const restrictRoles = [
   'sesadm/sistfd',
 ]
 
+const sistfdRolesChannel = new BroadcastChannel('sistfd-roles-channel');
+
 @Component({
   selector: 'app-sistfd-roles',
   imports: [MatButtonModule, MatIconModule, MatFormFieldModule, MatTableModule, MatInputModule, MatTooltipModule],
@@ -33,6 +35,11 @@ export class SistfdRolesPage {
   ) { }
 
   ngOnInit(): void {
+    sistfdRolesChannel.onmessage = (message) => {
+      if (message.data === 'update') {
+        this.getRoles()
+      }
+    }
     this.getRoles()
     this.getPermissions()
   }
@@ -102,6 +109,8 @@ export class SistfdRolesPage {
         role: role,
         permissions: this.permissions
       }
+    }).afterClosed().subscribe(() => {
+      this.getRoles()
     });
   }
 

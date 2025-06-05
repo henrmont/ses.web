@@ -31,7 +31,7 @@ export class SesadmCountiesPage implements OnInit {
   dataSource: any
   getCounties() {
     this.openLoadingBox()
-    this.sesadmService.getCounties('sesadm').subscribe({
+    this.sesadmService.getCounties().subscribe({
       next: (response) => {
         this.dataSource = new MatTableDataSource(response)
       },

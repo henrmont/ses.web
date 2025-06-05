@@ -8,6 +8,7 @@ import { authResolver } from './resolvers/auth.resolver';
 import { SistfdLayoutComponent } from './layouts/sistfd-layout/sistfd-layout.component';
 import { SesadmLayoutComponent } from './layouts/sesadm-layout/sesadm-layout.component';
 import { isVerifiedGuard } from './guards/is-verified.guard';
+import { SisppiLayoutComponent } from './layouts/sisppi-layout/sisppi-layout.component';
 
 export const routes: Routes = [
   {
@@ -104,6 +105,28 @@ export const routes: Routes = [
           {
             path: 'roles',
             loadComponent: () => import('./pages/sistfd/sistfd-roles/sistfd-roles.page').then( m => m.SistfdRolesPage)
+          },
+        ]
+      },
+      {
+        path: 'module/sisppi',
+        component: SisppiLayoutComponent,
+        children: [
+          {
+            path: '',
+            loadComponent: () => import('./pages/sisppi/sisppi-index/sisppi-index.page').then( m => m.SisppiIndexPage)
+          },
+          {
+            path: 'users',
+            loadComponent: () => import('./pages/sisppi/sisppi-users/sisppi-users.page').then( m => m.SisppiUsersPage)
+          },
+          {
+            path: 'roles',
+            loadComponent: () => import('./pages/sisppi/sisppi-roles/sisppi-roles.page').then( m => m.SisppiRolesPage)
+          },
+          {
+            path: 'counties',
+            loadComponent: () => import('./pages/sisppi/sisppi-counties/sisppi-counties.page').then( m => m.SisppiCountiesPage)
           },
         ]
       },

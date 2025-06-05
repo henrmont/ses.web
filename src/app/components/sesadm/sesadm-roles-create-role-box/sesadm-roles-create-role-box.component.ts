@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
+const sesadmRolesChannel = new BroadcastChannel('sesadm-roles-channel');
+
 @Component({
   selector: 'app-sesadm-roles-create-role-box',
   imports: [MatToolbarModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, FormsModule, ReactiveFormsModule],
@@ -49,6 +51,7 @@ export class SesadmRolesCreateRoleBoxComponent {
         });
       },
       complete: () => {
+        sesadmRolesChannel.postMessage('update')
         this.dialog.closeAll()
       }
     })

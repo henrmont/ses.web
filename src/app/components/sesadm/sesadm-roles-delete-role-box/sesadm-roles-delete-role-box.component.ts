@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SesadmService } from '../../../services/sesadm.service';
 import { MatButtonModule } from '@angular/material/button';
 
+const sesadmRolesChannel = new BroadcastChannel('sesadm-roles-channel');
+
 @Component({
   selector: 'app-sesadm-roles-delete-role-box',
   imports: [MatDialogModule, MatButtonModule],
@@ -37,6 +39,7 @@ export class SesadmRolesDeleteRoleBoxComponent {
         });
       },
       complete: () => {
+        sesadmRolesChannel.postMessage('update')
         this.dialog.closeAll()
       }
     })

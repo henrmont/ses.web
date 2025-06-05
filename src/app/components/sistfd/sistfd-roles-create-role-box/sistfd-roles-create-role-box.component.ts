@@ -9,6 +9,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SesadmService } from '../../../services/sesadm.service';
 
+const sistfdRolesChannel = new BroadcastChannel('sistfd-roles-channel');
+
 @Component({
   selector: 'app-sistfd-roles-create-role-box',
   imports: [MatToolbarModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, FormsModule, ReactiveFormsModule],
@@ -49,6 +51,7 @@ export class SistfdRolesCreateRoleBoxComponent {
         });
       },
       complete: () => {
+        sistfdRolesChannel.postMessage('update')
         this.dialog.closeAll()
       }
     })

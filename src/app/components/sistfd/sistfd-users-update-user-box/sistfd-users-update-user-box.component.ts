@@ -9,6 +9,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SesadmService } from '../../../services/sesadm.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+const sistfdUsersChannel = new BroadcastChannel('sistfd-users-channel');
+
 @Component({
   selector: 'app-sistfd-users-update-user-box',
   imports: [MatToolbarModule, MatIconModule, MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule],
@@ -17,7 +19,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SistfdUsersUpdateUserBoxComponent {
 
-   data = inject(MAT_DIALOG_DATA);
+  data = inject(MAT_DIALOG_DATA);
 
   updateForm: FormGroup = this.formBuilder.group({
     id: [this.data.user.id, [Validators.required]],
@@ -49,6 +51,7 @@ export class SistfdUsersUpdateUserBoxComponent {
         });
       },
       complete: () => {
+        sistfdUsersChannel.postMessage('update')
         this.dialog.closeAll()
       }
     })

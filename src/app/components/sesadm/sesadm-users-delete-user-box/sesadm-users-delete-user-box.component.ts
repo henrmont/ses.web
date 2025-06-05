@@ -4,6 +4,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/d
 import { SesadmService } from '../../../services/sesadm.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+const sesadmUsersChannel = new BroadcastChannel('sesadm-users-channel');
+
 @Component({
   selector: 'app-sesadm-users-delete-user-box',
   imports: [MatDialogModule, MatButtonModule],
@@ -36,6 +38,7 @@ export class SesadmUsersDeleteUserBoxComponent {
         });
       },
       complete: () => {
+        sesadmUsersChannel.postMessage('update')
         this.dialog.closeAll()
       }
     })
